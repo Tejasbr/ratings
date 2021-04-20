@@ -1,0 +1,93 @@
+
+<button (click)="clickBtn()">Click To Get Employee List</button>
+<button (click)="open(content1)">popUP</button>
+
+
+
+<ng-template #content1 let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Friend</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <div class="input-group">
+            <input id="firstname" class="form-control" >
+          </div>
+          <div class="input-group">
+            <button (click)="open2(content2)">popUP</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  
+  </ng-template>
+
+
+  <ng-template #content2 let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">New Friend</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="firstname">Firstname</label>
+          <div class="input-group">
+            <input id="firstname" class="form-control" >
+          </div>
+         
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+  </ng-template>
+
+<ul *ngIf="isClicked">
+    <h1>Team - 1</h1>
+    <app-football [footData2]="javaEmps"></app-football>
+    
+</ul>
+
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr id="font1">
+      <th scope="col">id</th>
+      <th scope="col">nhsNo</th>
+      <th scope="col">patientName</th>
+      <th scope="col">location</th>
+      
+      <th scope="col">netAmount</th>
+      <th scope="col">date</th>
+      <th scope="col">ratings</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of tableData">
+      <th scope="row">{{data.srNo}}</th>
+      <td>{{data.petientNHSNo}}</td>
+      <td>{{data.patientName}}</td>
+      <td>{{data.location}}</td>
+      
+      <td>{{data.orderAmt}}</td>
+      <td>{{data.date}}</td>
+      <td><ngb-rating [max]="5" [(rate)]="data.ratings" [readonly]="true"></ngb-rating>
+        </td>
+      
+    </tr>
+
+  </tbody>
+</table>
